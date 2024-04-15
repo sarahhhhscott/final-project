@@ -1,7 +1,8 @@
+## Title
 The name of my project is RPS Bot.
 
 
-DESCRIPTION AND FEATURES
+## DESCRIPTION AND FEATURES
 The objective of my project is to create a program that will play rock paper scissors with the user. 
 In doing so, it will prompt the user for an input on what they decide to choose for the match. 
 Next, it will say something like "Answer confirmed. Playing now:". 
@@ -13,17 +14,17 @@ If the user returns yes, it will play again. If the user returns no, then it wil
 I debated on creating a display screen to play the game, but I would most likely have to implement that with the pygame library, which I do not feel comfortable doing a project of this significance with due to my severe inexperience with its library. If I do have any time, I may be able to try it out, but for now, this code is set to be executed within the terminal.
 
 
-OUTCOME
+## OUTCOME
 The process above is the desired outcome of my project. The minimum outcome is to at least generate a response with the user's input to still be able to play rock paper scissors with the bot.
 
 
-PROCESS
+## PROCESS
 I plan to execute the timing of the print statements with the clock.tick function. As for the generated choices, I may either store them in a dictionary or its own defined function. The randomness of the choice will be implemented by importing random.
 
 
-CHALLENGES
+## CHALLENGES
 I believe the main challenges for this project will be to create the right timing in between print statements and to debug the code. I am sure I will run into errors with this project which might be a bit harder to solve as I preict this will be a rather lengthy amount of code.
 
 
-MILESTONES
+## MILESTONES
 Some of my weekly milestone goals to track will be just aiming to finish one aspect of my desired outcome per week, such as: implementing text, generating prompts, calculating timing and so on.
