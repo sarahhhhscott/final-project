@@ -1,5 +1,6 @@
 import tkinter
 import random
+import pygame
 
 ROWS = 25
 COLS = 25
@@ -18,6 +19,10 @@ class Tile:
 window = tkinter.Tk()
 window.title("Snake")
 window.resizable(False, False)
+
+pygame.mixer.init()
+pygame.mixer.music.load("music.wav")
+pygame.mixer.music.play()
 
 canvas = tkinter.Canvas(window, bg = "black", width = WINDOW_WIDTH, height = WINDOW_HEIGHT, borderwidth = 0, highlightthickness = 0)
 canvas.pack()
@@ -48,6 +53,7 @@ def change_direction(e): #e = event
     #print(e.keysym)
     global velocityX, velocityY
     if(game_over):
+        pygame.mixer.stop()
         return
     
 
