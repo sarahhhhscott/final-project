@@ -37,6 +37,11 @@ window.geometry(f"{window_width}x{window_height}+{window_x}+{window_y}")
 #initialize the game
 snake = Tile(5*TILE_SIZE, 5*TILE_SIZE) #single tile, snake's head
 food = Tile(10*TILE_SIZE, 10*TILE_SIZE)
+velocityX = 0
+velocityY = 0
+
+def change_direction(e): #e = event
+    print(e.keysym)
 
 def draw():
     global snake
@@ -56,5 +61,5 @@ def draw():
 draw()
 
 
-
+window.bind("<KeyRelease>", change_direction)
 window.mainloop()
