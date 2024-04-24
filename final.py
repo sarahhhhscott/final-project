@@ -49,6 +49,8 @@ def draw():
     #draw food
     canvas.create_rectangle(food.x, food.y, food.x + TILE_SIZE, food.y + TILE_SIZE, fill = "red")
 
+
+
     window.after(100, draw) #100ms = 1/10 second, 10 frames/second
 
 draw()
