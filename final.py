@@ -71,6 +71,8 @@ def draw():
     global snake
 
     move()
+    canvas.delete("all")
+
     #draw snake
     canvas.create_rectangle(snake.x, snake.y, snake.x + TILE_SIZE, snake.y + TILE_SIZE, fill = "lime green")
 
