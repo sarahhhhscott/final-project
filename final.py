@@ -3,10 +3,15 @@ import random
 
 ROWS = 25
 COLS = 25
-TITLE_SIZE = 25
+TILE_SIZE = 25
 
-WINDOW_WIDTH = TITLE_SIZE * ROWS 
-WINDOW_HEIGHT = TITLE_SIZE * COLS
+WINDOW_WIDTH = TILE_SIZE * ROWS 
+WINDOW_HEIGHT = TILE_SIZE * COLS
+
+class Tile:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
 
 
 #game window
@@ -28,6 +33,25 @@ window_x = int((screen_width/2) - (window_width/2))
 window_y = int((screen_height/2) - (window_height/2))
 #format "(w)x(h)+(x)+(y)"
 window.geometry(f"{window_width}x{window_height}+{window_x}+{window_y}")
+
+#initialize the game
+snake = Tile(5*TILE_SIZE, 5*TILE_SIZE) #single tile, snake's head
+food = Tile(10*TILE_SIZE, 10*TILE_SIZE)
+
+def draw():
+    global snake
+
+    #draw snake
+    canvas.create_rectangle(snake.x, snake.y, snake.x + TILE_SIZE, snake.y + TILE_SIZE, fill = "lime green")
+
+
+
+    #draw food
+    canvas.create_rectangle(food.x, food.y, food.x + TILE_SIZE, food.y + TILE_SIZE, fill = "red")
+
+    window.after(100, draw) #100ms = 1/10 second, 10 frames/second
+
+draw()
 
 
 
