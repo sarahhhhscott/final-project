@@ -1,6 +1,6 @@
 import tkinter
 import random
-import pygame
+import pygame, time
 
 ROWS = 25
 COLS = 25
@@ -45,6 +45,8 @@ velocityX = 0
 velocityY = 0
 game_over = False
 score = 0
+clock = pygame.time.Clock()
+dt = 0
 
 pygame.mixer.init()
 pygame.mixer.music.load("music.wav")
@@ -120,7 +122,7 @@ def move():
 
 
 def draw():
-    global snake, food, snake_body, game_over, score
+    global snake, food, snake_body, game_over, score, clock, dt
 
     move()
     canvas.delete("all")
@@ -138,6 +140,10 @@ def draw():
         canvas.create_text(WINDOW_WIDTH/2, WINDOW_HEIGHT/2, font = "Impact 40", text = f"Game Over.", fill = "red")
         canvas.create_text(WINDOW_WIDTH/2, WINDOW_HEIGHT/2, font = "Impact 20", text = f"\n\n\nYour Score: {score}", fill = "white")
         pygame.mixer.music.fadeout(60)
+        time.sleep(2)
+        end = pygame.mixer.Sound("gameover.wav")
+        end.set_volume(.4)
+        end.play(200)
     else:
         canvas.create_text(70, 25, font = "Courier 20", text = f"Score: {score}", fill = "white")
 
