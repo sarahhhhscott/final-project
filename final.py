@@ -20,9 +20,7 @@ window = tkinter.Tk()
 window.title("Snake")
 window.resizable(False, False)
 
-pygame.mixer.init()
-pygame.mixer.music.load("music.wav")
-pygame.mixer.music.play()
+
 
 canvas = tkinter.Canvas(window, bg = "black", width = WINDOW_WIDTH, height = WINDOW_HEIGHT, borderwidth = 0, highlightthickness = 0)
 canvas.pack()
@@ -48,12 +46,16 @@ velocityY = 0
 game_over = False
 score = 0
 
+pygame.mixer.init()
+pygame.mixer.music.load("music.wav")
+pygame.mixer.music.play()
+
+
 def change_direction(e): #e = event
     #print(e)
     #print(e.keysym)
     global velocityX, velocityY
     if(game_over):
-        pygame.mixer.stop()
         return
     
 
@@ -87,6 +89,9 @@ def move():
         if (snake.x == tile.x and snake.y == tile.y):
             game_over = True
             return
+        
+    
+        
     
     #collision
     if (snake.x == food.x and snake.y == food.y):
@@ -127,13 +132,15 @@ def draw():
         canvas.create_rectangle(tile.x, tile.y, tile.x + TILE_SIZE, tile.y + TILE_SIZE, fill = "lime green")
     
     if (game_over):
-        canvas.create_text(WINDOW_WIDTH/2, WINDOW_HEIGHT/2, font = "Arial 20", text = f"Game Over: {score}", fill = "white")
+        canvas.create_text(WINDOW_WIDTH/2, WINDOW_HEIGHT/2, font = "Impact 40", text = f"Game Over.", fill = "red")
+        canvas.create_text(WINDOW_WIDTH/2, WINDOW_HEIGHT/2, font = "Impact 20", text = f"\n\n\nYour Score: {score}", fill = "white")
     else:
-        canvas.create_text(30, 20, font = "Arial 10", text = f"Score: {score}", fill = "white")
+        canvas.create_text(70, 25, font = "Courier 20", text = f"Score: {score}", fill = "white")
 
     window.after(100, draw) #100ms = 1/10 second, 10 frames/second
 
 draw()
+
 
 
 window.bind("<KeyRelease>", change_direction)
