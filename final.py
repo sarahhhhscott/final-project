@@ -137,13 +137,20 @@ def draw():
         canvas.create_rectangle(tile.x, tile.y, tile.x + TILE_SIZE, tile.y + TILE_SIZE, fill = "lime green")
     
     if (game_over):
+        #create text
         canvas.create_text(WINDOW_WIDTH/2, WINDOW_HEIGHT/2, font = "Impact 40", text = f"Game Over.", fill = "red")
         canvas.create_text(WINDOW_WIDTH/2, WINDOW_HEIGHT/2, font = "Impact 20", text = f"\n\n\nYour Score: {score}", fill = "white")
+        
+        #cue the music
         pygame.mixer.music.fadeout(60)
-        time.sleep(2)
-        end = pygame.mixer.Sound("gameover.wav")
-        end.set_volume(.4)
-        end.play(200)
+        end = pygame.mixer.Sound("end.wav")
+        end.play()
+        time.sleep(.8)
+        end.stop()
+        time.sleep(1.5)
+        game = pygame.mixer.Sound("gameover.wav")
+        game.set_volume(.4)
+        game.play(1)
     else:
         canvas.create_text(70, 25, font = "Courier 20", text = f"Score: {score}", fill = "white")
 
