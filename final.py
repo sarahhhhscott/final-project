@@ -48,6 +48,7 @@ score = 0
 
 pygame.mixer.init()
 pygame.mixer.music.load("music.wav")
+pygame.mixer.music.set_volume(.4)
 pygame.mixer.music.play()
 
 
@@ -136,7 +137,7 @@ def draw():
     if (game_over):
         canvas.create_text(WINDOW_WIDTH/2, WINDOW_HEIGHT/2, font = "Impact 40", text = f"Game Over.", fill = "red")
         canvas.create_text(WINDOW_WIDTH/2, WINDOW_HEIGHT/2, font = "Impact 20", text = f"\n\n\nYour Score: {score}", fill = "white")
-        pygame.mixer.music.stop()
+        pygame.mixer.music.fadeout(60)
     else:
         canvas.create_text(70, 25, font = "Courier 20", text = f"Score: {score}", fill = "white")
 
