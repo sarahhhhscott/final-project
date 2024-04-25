@@ -144,13 +144,13 @@ def draw():
         #cue the music
         pygame.mixer.music.fadeout(60)
         end = pygame.mixer.Sound("end.wav")
-        end.play()
+        pygame.mixer.Sound.play(end, loops=0)
         time.sleep(.8)
         end.stop()
         time.sleep(1.5)
         game = pygame.mixer.Sound("gameover.wav")
         game.set_volume(.4)
-        game.play(1)
+        game.play(loops=0)
     else:
         canvas.create_text(70, 25, font = "Courier 20", text = f"Score: {score}", fill = "white")
 
