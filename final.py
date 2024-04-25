@@ -99,6 +99,8 @@ def move():
         food.x = random.randint(0, COLS-1) * TILE_SIZE
         food.y = random.randint(0, ROWS-1) * TILE_SIZE
         score += 1
+        collect = pygame.mixer.Sound("collect.mp3")
+        collect.play()
 
     #update snake body
     for i in range(len(snake_body)-1, -1, -1):
@@ -134,6 +136,7 @@ def draw():
     if (game_over):
         canvas.create_text(WINDOW_WIDTH/2, WINDOW_HEIGHT/2, font = "Impact 40", text = f"Game Over.", fill = "red")
         canvas.create_text(WINDOW_WIDTH/2, WINDOW_HEIGHT/2, font = "Impact 20", text = f"\n\n\nYour Score: {score}", fill = "white")
+        pygame.mixer.music.stop()
     else:
         canvas.create_text(70, 25, font = "Courier 20", text = f"Score: {score}", fill = "white")
 
