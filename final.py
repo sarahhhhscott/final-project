@@ -129,6 +129,7 @@ def move():
     snake.y += velocityY * TILE_SIZE
 
 def sound():
+    global game_over
     if (game_over):
         pygame.mixer.music.stop()
         end = pygame.mixer.Sound("end.wav")
