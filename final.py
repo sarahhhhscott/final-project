@@ -48,10 +48,18 @@ score = 0
 clock = pygame.time.Clock()
 dt = 0
 
-pygame.mixer.init()
-pygame.mixer.music.load("music.wav")
-pygame.mixer.music.set_volume(.4)
-pygame.mixer.music.play()
+def music():
+    global snake, food, snake_body, game_over, score
+    pygame.mixer.init()
+    pygame.mixer.music.load("music.wav")
+    pygame.mixer.music.set_volume(.4)
+    pygame.mixer.music.play()
+    
+    if game_over:
+        pygame.mixer.music.fadeout(60)
+    return
+music()
+
 
 
 def change_direction(e): #e = event
@@ -120,6 +128,19 @@ def move():
     snake.x += velocityX * TILE_SIZE
     snake.y += velocityY * TILE_SIZE
 
+def sound():
+    if (game_over):
+        pygame.mixer.music.stop()
+        end = pygame.mixer.Sound("end.wav")
+        pygame.mixer.Sound.play(end, loops=0)
+        time.sleep(.8)
+        end.stop()
+        time.sleep(1.5)
+        game = pygame.mixer.Sound("gameover.wav")
+        game.set_volume(.4)
+        game.play(loops=0)
+        return
+sound()
 
 def draw():
     global snake, food, snake_body, game_over, score, clock, dt
@@ -140,23 +161,15 @@ def draw():
         #create text
         canvas.create_text(WINDOW_WIDTH/2, WINDOW_HEIGHT/2, font = "Impact 40", text = f"Game Over.", fill = "red")
         canvas.create_text(WINDOW_WIDTH/2, WINDOW_HEIGHT/2, font = "Impact 20", text = f"\n\n\nYour Score: {score}", fill = "white")
+        time.sleep(0.8)
         
-        #cue the music
-        pygame.mixer.music.fadeout(60)
-        end = pygame.mixer.Sound("end.wav")
-        pygame.mixer.Sound.play(end, loops=0)
-        time.sleep(.8)
-        end.stop()
-        time.sleep(1.5)
-        game = pygame.mixer.Sound("gameover.wav")
-        game.set_volume(.4)
-        game.play(loops=0)
     else:
         canvas.create_text(70, 25, font = "Courier 20", text = f"Score: {score}", fill = "white")
 
     window.after(100, draw) #100ms = 1/10 second, 10 frames/second
 
 draw()
+
 
 
 
