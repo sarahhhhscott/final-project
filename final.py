@@ -9,47 +9,7 @@ TILE_SIZE = 25
 WINDOW_WIDTH = TILE_SIZE * ROWS 
 WINDOW_HEIGHT = TILE_SIZE * COLS
 
-class Tile:
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
-
-
-#game window
-window = tkinter.Tk()
-window.title("Snake")
-window.resizable(False, False)
-
-
-
-canvas = tkinter.Canvas(window, bg = "black", width = WINDOW_WIDTH, height = WINDOW_HEIGHT, borderwidth = 0, highlightthickness = 0)
-canvas.pack()
-window.update()
-
-#center the window
-window_width = window.winfo_width()
-window_height = window.winfo_height()
-screen_width = window.winfo_screenwidth()
-screen_height = window.winfo_screenheight()
-
-window_x = int((screen_width/2) - (window_width/2))
-window_y = int((screen_height/2) - (window_height/2))
-#format "(w)x(h)+(x)+(y)"
-window.geometry(f"{window_width}x{window_height}+{window_x}+{window_y}")
-
-#initialize the game
-snake = Tile(5*TILE_SIZE, 5*TILE_SIZE) #single tile, snake's head
-food = Tile(10*TILE_SIZE, 10*TILE_SIZE)
-snake_body = [] #multiple snake tiles
-velocityX = 0
-velocityY = 0
-game_over = False
-score = 0
-clock = pygame.time.Clock()
-dt = 0
-
-def music():
-    global snake, food, snake_body, game_over, score
+def play_music(game_over):
     pygame.mixer.init()
     pygame.mixer.music.load("music.wav")
     pygame.mixer.music.set_volume(.4)
@@ -58,9 +18,6 @@ def music():
     if game_over:
         pygame.mixer.music.fadeout(60)
     return
-music()
-
-
 
 def change_direction(e): #e = event
     #print(e)
@@ -141,8 +98,7 @@ def sound():
         game.set_volume(.4)
         game.play(loops=0)
         return
-sound()
-
+    
 def draw():
     global snake, food, snake_body, game_over, score, clock, dt
 
@@ -168,6 +124,55 @@ def draw():
         canvas.create_text(70, 25, font = "Courier 20", text = f"Score: {score}", fill = "white")
 
     window.after(100, draw) #100ms = 1/10 second, 10 frames/second
+
+
+class Tile:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+
+#game window
+window = tkinter.Tk()
+window.title("Snake")
+window.resizable(False, False)
+
+
+
+canvas = tkinter.Canvas(window, bg = "black", width = WINDOW_WIDTH, height = WINDOW_HEIGHT, borderwidth = 0, highlightthickness = 0)
+canvas.pack()
+window.update()
+
+#center the window
+window_width = window.winfo_width()
+window_height = window.winfo_height()
+screen_width = window.winfo_screenwidth()
+screen_height = window.winfo_screenheight()
+
+window_x = int((screen_width/2) - (window_width/2))
+window_y = int((screen_height/2) - (window_height/2))
+#format "(w)x(h)+(x)+(y)"
+window.geometry(f"{window_width}x{window_height}+{window_x}+{window_y}")
+
+#initialize the game
+snake = Tile(5*TILE_SIZE, 5*TILE_SIZE) #single tile, snake's head
+food = Tile(10*TILE_SIZE, 10*TILE_SIZE)
+snake_body = [] #multiple snake tiles
+velocityX = 0
+velocityY = 0
+game_over = False
+score = 0
+clock = pygame.time.Clock()
+dt = 0
+
+
+play_music(game_over)
+
+
+
+
+sound()
+
 
 draw()
 
