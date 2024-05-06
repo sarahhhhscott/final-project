@@ -15,8 +15,8 @@ def play_music(game_over):
     pygame.mixer.music.set_volume(.4)
     pygame.mixer.music.play()
     
-    if game_over:
-        pygame.mixer.music.fadeout(60)
+    if (game_over):
+        pygame.mixer.music.stop()
     return
 
 def change_direction(e): #e = event
@@ -85,8 +85,7 @@ def move():
     snake.x += velocityX * TILE_SIZE
     snake.y += velocityY * TILE_SIZE
 
-def sound():
-    global game_over
+def sound(game_over):
     if (game_over):
         pygame.mixer.music.stop()
         end = pygame.mixer.Sound("end.wav")
@@ -97,7 +96,7 @@ def sound():
         game = pygame.mixer.Sound("gameover.wav")
         game.set_volume(.4)
         game.play(loops=0)
-        return
+    return
     
 def draw():
     global snake, food, snake_body, game_over, score, clock, dt
@@ -165,19 +164,22 @@ score = 0
 clock = pygame.time.Clock()
 dt = 0
 
-
-play_music(game_over)
-
-
-
-
-sound()
-
-
-draw()
+def main():
+    play_music(game_over)
 
 
 
 
-window.bind("<KeyRelease>", change_direction)
-window.mainloop()
+    sound(game_over)
+
+
+    draw()
+
+
+
+
+    window.bind("<KeyRelease>", change_direction)
+    window.mainloop()
+
+if __name__ == "__main__":
+    main()
