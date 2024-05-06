@@ -2,8 +2,8 @@
 
 
 ## Demo
-Link to Final:
-Link to Redone Final (incomplete):
+Link to Final: https://youtu.be/nWc6H66wHE8
+Link to Redone Final (incomplete): https://youtu.be/OuJ2HghE2go
 
 ## GitHub Repository
 Link: https://github.com/sarahhhhscott/final-project.git
@@ -24,7 +24,7 @@ For future areas of improvement, I will need to learn more about python librarie
 
 In specific features I would include when I learn more about the libraries, I would include a "Start Game" text that would dissapear with any keyboard click. Additionally, I would store a high score for each gameplay and display it at the end of the game. If the current score would be higher than the highest score, I would try to display a "Personal Best!" text as well. Lastly, I would include a method to restart the game with the push of a button, instead of having to exit out of the program to relaunch the game.
 
-Throughout the making of this project, and even having to redo my project referencing an additional tutorial, I have learned a lot about making Python games. This project has allowed me more experience with pygame and learning tkinter. Though I did run into a bit of issues, I was able to shift my mindset to that of a programmer as I was reading through, deciphering, and debugging code. With this mindset shift in the newfound knowledge I've aquired over the past few weeks, I was able to solve quite a bit of issues along the way. Though I wasn't able to get my project exactly to the point I had imagined, I am extremely proud of what I have coded and everything I've learned.
+Throughout the making of this project, and even having to redo my project referencing an additional tutorial, I have learned a lot about making Python games. This project has allowed me more experience with pygame and learning tkinter. Though I did run into a bit of issues, I was able to shift my mindset to that of a programmer as I was reading through, deciphering, and debugging code. With this mindset shift in the newfound knowledge I've aquired over the past few weeks, I was able to solve quite a bit of issues along the way. Though I wasn't able to get my project exactly to the point I had imagined, I am extremely proud of what I have coded and everything I've learned and had fun playing the this game throughout the process.
 
 
 ## Tutorial Reference
