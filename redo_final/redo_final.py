@@ -71,7 +71,7 @@ SCREEN_UPDATE = pygame.USEREVENT
 pygame.time.set_timer(SCREEN_UPDATE, 150)
 #test_rect = test_surface.get_rect(center = (200,250))
 pygame.mixer.init()
-pygame.mixer.music.load('music.wav')
+pygame.mixer.music.load('music2.wav')
 pygame.mixer.music.play()
 
 main_game = MAIN()
