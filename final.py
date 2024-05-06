@@ -15,7 +15,7 @@ def play_music(game_over):
     pygame.mixer.music.set_volume(.4)
     pygame.mixer.music.play()
     
-    if (game_over):
+    if (game_over == True):
         pygame.mixer.music.stop()
     return
 
@@ -133,7 +133,7 @@ class Tile:
 
 #game window
 window = tkinter.Tk()
-window.title("Snake")
+window.title("Python is a Snake!")
 window.resizable(False, False)
 
 
@@ -167,13 +167,33 @@ dt = 0
 def main():
     play_music(game_over)
 
-
-
-
-    sound(game_over)
-
+    if (game_over == True):
+        pygame.mixer.music.stop()
+        end = pygame.mixer.Sound("end.wav")
+        pygame.mixer.Sound.play(end, loops=0)
+        time.sleep(.8)
+        end.stop()
+        time.sleep(1.5)
+        game = pygame.mixer.Sound("gameover.wav")
+        game.set_volume(.4)
+        game.play(loops=0)
 
     draw()
+
+    """
+    root = tkinter.Tk()
+
+    # Load  image
+    bg = tkinter.PhotoImage(file="bg(2).jpg")
+
+    # Create a label widget and set image to object
+    label = tkinter.Label(root, image=bg)
+
+    # Place the label widget
+    label.pack()"""
+
+    
+    
 
 
 
